@@ -1,28 +1,41 @@
 # E-Commerce Sales Intelligence Platform
 
 ## 📌 Project Overview
-An interactive, high-fidelity business intelligence dashboard developed in Power BI Desktop. This platform ingests raw, high-volume transactional retail records and transforms them into an optimized Snowflake schema to deliver on-demand profit tracking and operational insights to executive stakeholders.
+This project is an interactive, high-fidelity business intelligence dashboard developed in Power BI Desktop. The platform ingests relational retail datasets to deliver on-demand profit tracking, customer behavior analysis, and spatial-temporal operational insights to executive stakeholders.
+
+## 📸 Dashboard Preview
+<img width="1360" height="765" alt="Dashboard_screenshot" src="https://github.com/user-attachments/assets/d7f84117-197f-4e3d-865e-0d0a542203c4" />
+
+*Snapshot reflecting Q4 performance metrics isolated for the state of Maharashtra.*
+
+---
 
 ## 🏗️ Data Architecture & ETL Pipeline
-Raw e-commerce data (sales, inventory, and localization variables) inherently contains structural anomalies. The backend architecture of this project focuses on strict data modeling:
-1. **Extraction & Transformation (Power Query):** Cleaned raw datasets, resolved data type inconsistencies, and executed merge/append operations to unify siloed tables.
-2. **Data Modeling:** Engineered a robust **Snowflake Schema**, normalizing dimension tables (Products, Regions, Customers) around a central transactional Fact table to optimize query performance and filter propagation.
-3. **Semantic Layer (DAX):** Developed robust Data Analysis Expressions (DAX) to calculate advanced time-intelligence metrics, profit margins, and rolling averages.
+The backend architecture of this project focuses on strict relational data modeling. Raw e-commerce data was ingested via two distinct files and normalized into a unified model:
 
-## 📊 Dashboard Features
-* **Executive KPI Tracking:** Top-level metrics for Total Revenue, Profit Margins, and Order Volume.
-* **Visual Drill-Down Layouts:** Hierarchical matrices and charts allowing stakeholders to drill from regional performance down to individual product category margins.
-* **Interactive Filtering:** Cross-filtering enabled across all visual layers for on-demand spatial and temporal analysis.
+### 1. Data Sources & Schema
+*   **`Orders.xlsx` (Dimension Table):** Contains 500 unique records tracking overarching order metadata, including `Order ID`, `Order Date`, `CustomerName`, `State`, and `City`.
+*   **`Details.xlsx` (Fact Table):** Contains 1,500 transactional records detailing the granular line-item metrics, including `Amount`, `Profit`, `Quantity`, `Category`, `Sub-Category`, `PaymentMode`, and `AOV` (Average Order Value).
+*   **Data Modeling:** Engineered a 1-to-Many relational model linking the tables via the `Order ID` primary/foreign key to optimize query performance and enable cross-filtering.
+
+### 2. Semantic Layer & Analytics
+Developed a robust semantic layer to calculate dynamic metrics across various dimensions:
+*   **Temporal Intelligence:** Sliced performance by financial quarters (Q1–Q4) and granular monthly trends (e.g., tracking the profit dip in December against November highs).
+*   **Categorical Profitability:** Isolated top-performing product categories, identifying *Electronic Games* and *Printers* as primary profit drivers.
+*   **Consumer Behavior:** Mapped purchase volume against specific payment methods and ranked top individual customers (e.g., Gopal, Uudhav) by lifetime value.
+
+## 📊 Core Dashboard Features
+*   **Executive KPI Banner:** High-level dynamic tracking of Total Amount, Total Profit, Total Quantity, and Average Order Value (AOV).
+*   **Visual Drill-Down Layouts:** Hierarchical matrices and charts allowing stakeholders to drill from regional state performance (e.g., Maharashtra) down to individual product category margins.
+*   **Interactive Slicers:** Cross-filtering enabled across all visual layers for on-demand spatial (State) and temporal (Quarter) analysis.
 
 ## 📂 Repository Contents
-* `Ecommerce sale Dashboard.pbix` - The complete Power BI project file (contains the Power Query M code, DAX models, and frontend layouts).
+*   `Ecommerce sale Dashboard.pbix` - The complete Power BI project file containing the data model, DAX measures, and frontend UI.
+*   `Orders.xlsx` - Customer and localization dimension dataset.
+*   `Details.xlsx` - Granular transactional fact dataset.
+*   `Screenshot 2026-07-02 185004.png` - High-resolution UI preview.
 
 ## 🛠️ Tech Stack
-* **Tool:** Power BI Desktop
-* **Backend:** Power Query (M Language), Data Modeling (Snowflake Schema)
-* **Analytical Engine:** DAX (Data Analysis Expressions)
-
-## 💡 How to View
-1. Ensure you have [Power BI Desktop](https://powerbi.microsoft.com/desktop/) installed on your machine.
-2. Download the `Ecommerce sale Dashboard.pbix` file from this repository.
-3. Open the file to explore the interactive visual canvas, the underlying data model view, and the DAX measures.
+*   **Tool:** Power BI Desktop
+*   **Backend:** Data Modeling (Relational 1:* Schema)
+*   **Analytical Engine:** DAX (Data Analysis Expressions)
