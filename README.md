@@ -33,7 +33,7 @@ Developed a robust semantic layer to calculate dynamic metrics across various di
 *   `Ecommerce sale Dashboard.pbix` - The complete Power BI project file containing the data model, DAX measures, and frontend UI.
 *   `Orders.xlsx` - Customer and localization dimension dataset.
 *   `Details.xlsx` - Granular transactional fact dataset.
-*   `Screenshot 2026-07-02 185004.png` - High-resolution UI preview.
+*   `Dashboard_screenshot.png` - High-resolution UI preview.
 
 ## 🛠️ Tech Stack
 *   **Tool:** Power BI Desktop
